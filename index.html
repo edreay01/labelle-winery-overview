@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LaBelle Winery × Shopify Plus — Financial Overview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --wine:#5b1a2e; --wine-deep:#3f0f1f; --wine-soft:#7c2740;
+    --gold:#c1974a; --gold-soft:#e4cf9f;
+    --cream:#faf6f1; --cream-2:#f2e9df;
+    --ink:#241d1a; --ink-soft:#5a4f49;
+    --green:#008060; --green-soft:#e3f1ec;
+    --red:#b23a3a; --red-deep:#7a1f1f;
+    --line:#e7dccf;
+    --shadow:0 10px 40px rgba(63,15,31,.10);
+    --shadow-lg:0 24px 70px rgba(63,15,31,.18);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--cream);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .serif{font-family:'Cormorant Garamond',Georgia,serif}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-height:1.1;letter-spacing:-.01em}
+  .eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+  .num-tab{font-variant-numeric:tabular-nums}
+
+  /* Hero */
+  header.hero{background:radial-gradient(1200px 600px at 75% -10%,rgba(193,151,74,.20),transparent 60%),linear-gradient(160deg,var(--wine-deep) 0%,var(--wine) 55%,var(--wine-soft) 130%);color:#fff;position:relative;overflow:hidden;padding:64px 0 80px}
+  .hero .wrap{position:relative;z-index:1}
+  .brandline{display:flex;align-items:center;gap:14px;font-weight:600;font-size:.88rem;opacity:.9;margin-bottom:34px}
+  .brandline .dot{width:5px;height:5px;border-radius:50%;background:var(--gold)}
+  .hero h1{font-size:clamp(2.5rem,6vw,4.4rem);color:#fff;max-width:17ch}
+  .hero h1 em{font-style:italic;color:var(--gold-soft)}
+  .hero .sub{font-size:1.08rem;max-width:56ch;margin-top:18px;color:#f4e9df}
+  .hero .meta{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px;font-size:.78rem}
+  .hero .meta span{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);padding:6px 13px;border-radius:100px}
+  .headline-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
+  .hcard{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:22px 20px;backdrop-filter:blur(6px)}
+  .hcard .num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;line-height:1;color:#fff}
+  .hcard .num.good{color:var(--gold-soft)}
+  .hcard .lbl{font-size:.82rem;color:#e9d8c7;margin-top:8px;font-weight:500}
+  .hcard .sub{font-size:.72rem;color:#c9a98f;margin-top:3px}
+
+  /* Nav */
+  nav.jump{position:sticky;top:0;z-index:40;background:rgba(250,246,241,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav.jump .wrap{display:flex;gap:4px;align-items:center;flex-wrap:wrap;padding:11px 28px}
+  nav.jump a{font-size:.8rem;font-weight:600;color:var(--ink-soft);text-decoration:none;padding:7px 13px;border-radius:100px;transition:.15s}
+  nav.jump a:hover{background:var(--cream-2);color:var(--wine)}
+  nav.jump .tag{font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--wine);margin-right:auto}
+
+  section{padding:66px 0}
+  section.alt{background:linear-gradient(180deg,var(--cream-2),var(--cream))}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
+  .sec-num{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:#fff;background:var(--wine);width:44px;height:44px;min-width:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow)}
+  h2.sec-title{font-size:clamp(2rem,4vw,2.8rem);color:var(--wine-deep)}
+  .sec-sub{font-size:1rem;color:var(--ink-soft);max-width:64ch;margin:12px 0 30px}
+  .pill{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border-radius:100px}
+  .pill.brief{background:var(--green-soft);color:var(--green)}
+  .pill.deep{background:#f6e4e4;color:var(--red)}
+
+  /* Capabilities */
+  .cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px}
+  .cap{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow)}
+  .cap .ico{font-size:1.5rem}
+  .cap h3{font-size:1.28rem;color:var(--wine);margin:8px 0 4px}
+  .cap p{font-size:.85rem;color:var(--ink-soft);margin-top:4px}
+  .verdict{display:inline-flex;align-items:center;gap:6px;font-size:.68rem;font-weight:700;padding:4px 10px;border-radius:7px;letter-spacing:.02em}
+  .v-native{background:var(--green-soft);color:var(--green)}
+  .v-app{background:#fdf3e0;color:#b07d1c}
+
+  .callout{background:#fff;border-left:5px solid var(--gold);border-radius:0 14px 14px 0;padding:18px 24px;box-shadow:var(--shadow);margin:26px 0}
+  .callout.green{border-left-color:var(--green)}
+  .callout.wine{border-left-color:var(--wine)}
+  .callout.red{border-left-color:var(--red)}
+  .callout h4{font-family:'Inter';font-size:.92rem;font-weight:800;margin-bottom:5px;color:var(--wine-deep)}
+  .callout p{font-size:.92rem;color:var(--ink-soft)}
+  .callout.green h4{color:var(--green)}
+
+  /* Payments — per $100 stacked bar */
+  .viz{background:#fff;border:1px solid var(--line);border-radius:20px;padding:30px 32px;box-shadow:var(--shadow-lg);margin:24px 0}
+  .viz h3{font-size:1.45rem;color:var(--wine-deep);margin-bottom:4px}
+  .viz .cap-sm{font-size:.82rem;color:var(--ink-soft);margin-bottom:24px}
+  .srow{display:grid;grid-template-columns:150px 1fr 78px;align-items:center;gap:14px;margin-bottom:18px}
+  .srow:last-child{margin-bottom:0}
+  .slabel{font-size:.82rem;font-weight:700;color:var(--ink);text-align:right;line-height:1.25}
+  .slabel small{display:block;font-weight:500;color:var(--ink-soft);font-size:.72rem}
+  .strack{height:44px;background:var(--cream-2);border-radius:10px;overflow:hidden;display:flex}
+  .sseg{height:100%;display:flex;align-items:center;padding:0 12px;color:#fff;font-weight:700;font-size:.78rem;white-space:nowrap;transition:width 1.1s cubic-bezier(.22,1,.36,1)}
+  .sseg.network{background:linear-gradient(90deg,#b9a06a,#96793d)}
+  .sseg.markup{background:linear-gradient(90deg,#c0453f,var(--red-deep))}
+  .sseg.shop{background:linear-gradient(90deg,#00a37a,var(--green))}
+  .stotal{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700}
+  .stotal.bad{color:var(--red)} .stotal.good{color:var(--green)}
+  .legend{display:flex;gap:22px;flex-wrap:wrap;margin-top:20px;padding-top:16px;border-top:1px dashed var(--line);font-size:.78rem;color:var(--ink-soft)}
+  .legend span{display:inline-flex;align-items:center;gap:7px}
+  .swatch{width:13px;height:13px;border-radius:4px;display:inline-block}
+  .sw-net{background:#96793d} .sw-mk{background:var(--red)} .sw-sh{background:var(--green)}
+  .scale-ticks{display:flex;justify-content:space-between;margin:2px 0 0 164px;font-size:.66rem;color:var(--ink-soft);max-width:calc(100% - 242px)}
+
+  /* Statement snapshot stat row */
+  .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:10px 0 4px}
+  .stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;box-shadow:var(--shadow);text-align:center}
+  .stat .k{font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+  .stat .v{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;line-height:1;margin-top:6px}
+  .stat .v.red{color:var(--red)} .stat .v.ink{color:var(--wine-deep)}
+  .stat .d{font-size:.72rem;color:var(--ink-soft);margin-top:5px}
+
+  /* fee breakdown table */
+  table.fees{width:100%;border-collapse:collapse;background:#fff;border-radius:16px;overflow:hidden;box-shadow:var(--shadow-lg);font-size:.9rem}
+  table.fees th,table.fees td{padding:13px 18px;text-align:left;border-bottom:1px solid var(--line)}
+  table.fees thead th{background:var(--wine-deep);color:#fff;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700}
+  table.fees td:last-child,table.fees th:last-child{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  table.fees .desc{color:var(--ink-soft);font-size:.82rem}
+  table.fees tr.markup td{background:#fdf1f1}
+  table.fees tr.subt td{font-weight:800;border-top:2px solid var(--red);background:#fbe9e9}
+  table.fees tr.subt td:last-child{color:var(--red-deep)}
+  table.fees tr.net td{color:var(--ink-soft)}
+  table.fees tr.grand td{font-weight:800;background:var(--cream-2);border-top:2px solid var(--wine);font-size:1rem}
+  .tag-badge{font-size:.64rem;font-weight:800;padding:2px 7px;border-radius:5px;margin-left:8px}
+  .tb-mk{background:#f6dede;color:var(--red-deep)} .tb-net{background:#eae1cf;color:#7a5f22}
+
+  /* hike timeline */
+  .hike{display:flex;align-items:center;gap:0;margin-top:8px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 26px;box-shadow:var(--shadow)}
+  .hstep{text-align:center;flex:1}
+  .hstep .mo{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+  .hstep .r{font-family:'Cormorant Garamond',serif;font-size:2.1rem;font-weight:700;line-height:1;margin-top:3px}
+  .hstep.a .r{color:#c99} .hstep.b .r{color:var(--red)}
+  .harrow{font-size:1.6rem;color:var(--gold);padding:0 6px}
+  .hnote{font-size:.8rem;color:var(--ink-soft);flex:1.4;padding-left:16px;border-left:1px dashed var(--line)}
+
+  /* TCO */
+  table.tco{width:100%;border-collapse:collapse;background:#fff;border-radius:16px;overflow:hidden;box-shadow:var(--shadow-lg);margin-top:6px;font-size:.92rem}
+  table.tco th,table.tco td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line)}
+  table.tco thead th{background:var(--wine-deep);color:#fff;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700}
+  table.tco thead th:nth-child(2),table.tco thead th:nth-child(3){text-align:right}
+  table.tco td:nth-child(2),table.tco td:nth-child(3){text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  table.tco .cat{font-weight:600}
+  table.tco tr.total td{background:var(--cream-2);font-weight:800;font-size:1.02rem;border-top:2px solid var(--wine)}
+  table.tco tr.total td:nth-child(3){color:var(--wine-deep)}
+  .cur-col{color:var(--red)} .shop-col{color:var(--green)}
+  table.tco td small{color:var(--ink-soft);font-weight:400}
+
+  .versus{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:center;margin:30px 0}
+  .vs-card{border-radius:20px;padding:26px;box-shadow:var(--shadow-lg);text-align:center}
+  .vs-card.cur{background:linear-gradient(160deg,#fff,#fdeeee);border:1px solid #f0d3d3}
+  .vs-card.shop{background:linear-gradient(160deg,#fff,#e6f4ee);border:1px solid #cbe7db}
+  .vs-card .who{font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+  .vs-card .amt{font-family:'Cormorant Garamond',serif;font-size:3.2rem;font-weight:700;line-height:1;margin:6px 0 2px}
+  .vs-card.cur .amt{color:var(--red)} .vs-card.shop .amt{color:var(--green)}
+  .vs-card .peryr{font-size:.8rem;color:var(--ink-soft)}
+  .vs-mid{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--wine);font-weight:700;text-align:center}
+
+  .split-note{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+  .sn{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow)}
+  .sn .h{font-weight:800;font-size:.86rem;margin-bottom:4px}
+  .sn.red .h{color:var(--red)} .sn.green .h{color:var(--green)}
+  .sn p{font-size:.84rem;color:var(--ink-soft)}
+  .sn .n{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700}
+  .sn.red .n{color:var(--red)} .sn.green .n{color:var(--green)}
+
+  .net-banner{background:linear-gradient(135deg,var(--wine-deep),var(--wine-soft));color:#fff;border-radius:22px;padding:36px;text-align:center;box-shadow:var(--shadow-lg);margin-top:26px}
+  .net-banner .eyebrow{color:var(--gold-soft)}
+  .net-banner .amt{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,4.6rem);font-weight:700;line-height:1;margin:6px 0;color:#fff}
+  .net-banner p{max-width:56ch;margin:4px auto 0;color:#f3e7dc;font-size:.95rem}
+
+  .whynow{background:#fff;border:2px solid var(--gold);border-radius:20px;padding:28px 32px;box-shadow:var(--shadow-lg)}
+  .whynow h3{color:var(--wine-deep);font-size:1.6rem;margin-bottom:12px}
+  .whynow ul{list-style:none;display:grid;gap:12px}
+  .whynow li{display:flex;gap:13px;font-size:.92rem;color:var(--ink-soft)}
+  .whynow li .k{color:var(--gold);font-size:1.1rem}
+  .whynow li b{color:var(--ink)}
+
+  details.assump{background:#fff;border:1px solid var(--line);border-radius:14px;padding:2px 22px;margin-top:14px;box-shadow:var(--shadow)}
+  details.assump summary{cursor:pointer;font-weight:700;color:var(--wine);padding:14px 0;font-size:.9rem;list-style:none}
+  details.assump summary::-webkit-details-marker{display:none}
+  details.assump summary:before{content:"▸ ";color:var(--gold)}
+  details.assump[open] summary:before{content:"▾ "}
+  details.assump ul{padding:0 0 16px 18px;color:var(--ink-soft);font-size:.83rem;line-height:1.8}
+  details.assump b{color:var(--ink)}
+
+  footer{background:var(--wine-deep);color:#e9d8c7;padding:50px 0 36px}
+  footer h3{color:#fff;font-size:1.8rem;margin-bottom:14px}
+  footer ol{margin:0 0 0 18px;font-size:.94rem}
+  footer ol li{margin-bottom:7px}
+  footer .fine{margin-top:26px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);font-size:.72rem;color:#b799a0;line-height:1.65}
+  .src{font-size:.72rem;color:var(--ink-soft);margin-top:12px;font-style:italic}
+
+  @media(max-width:860px){
+    .headline-cards,.cap-grid,.stat-row{grid-template-columns:1fr}
+    .split-note{grid-template-columns:1fr}
+    .versus{grid-template-columns:1fr}
+    .srow{grid-template-columns:110px 1fr 60px}
+    .scale-ticks{display:none}
+    .hike{flex-direction:column;gap:12px;align-items:stretch}
+    .harrow{transform:rotate(90deg)} .hnote{border-left:none;padding-left:0}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="brandline"><span>LaBelle Winery</span><span class="dot"></span><span>Shopify Plus</span><span class="dot"></span><span style="opacity:.7">Financial Overview</span></div>
+    <div class="eyebrow">Prepared for Michelle Thornton &amp; Ashlynn Patenaude · August 2026</div>
+    <h1 class="serif">Wine, events and clubs — on <em>one platform</em>.</h1>
+    <p class="sub">Today LaBelle runs on WordPress, WooCommerce, a stack of plugins and two UPS keys. Here's what consolidating onto Shopify Plus looks like — the capabilities, the cost, and a full-year comparison.</p>
+    <div class="meta"><span>Based on your April–June Global Payments statements</span><span>Trailing-12-month online revenue</span><span>Confidential</span></div>
+
+    <div class="headline-cards">
+      <div class="hcard"><div class="num">01</div><div class="lbl">Platform &amp; capabilities</div><div class="sub">What moves to Shopify Plus — and the two apps you'd add</div></div>
+      <div class="hcard"><div class="num">02</div><div class="lbl">Payment processing</div><div class="sub">A line-by-line read of your current card fees</div></div>
+      <div class="hcard"><div class="num">03</div><div class="lbl">12-month comparison</div><div class="sub">The full-year cost, side by side</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="jump">
+  <div class="wrap">
+    <span class="tag">Jump to</span>
+    <a href="#platform">1 · Platform &amp; Capabilities</a>
+    <a href="#payments">2 · Payment Processing</a>
+    <a href="#tco">3 · 12-Month Comparison</a>
+    <a href="#whynow">Why now</a>
+  </div>
+</nav>
+
+<!-- SECTION 1 -->
+<section id="platform">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">1</div>
+      <div><span class="pill brief">Recap of the technical walkthrough</span><h2 class="sec-title serif">Platform &amp; Capabilities</h2></div>
+    </div>
+    <p class="sec-sub">Your current stack — WordPress + WooCommerce, a wall of plugins, dual UPS keys, and Zapier automations — maps onto Shopify Plus almost entirely with native features. Two things need paid apps: <b>wine compliance/shipping</b> and <b>events ticketing</b>. Those two are the ~$5K of third-party apps in the cost model below.</p>
+
+    <div class="cap-grid">
+      <div class="cap">
+        <div class="ico">🍷</div>
+        <span class="verdict v-app">Paid app</span>
+        <h3 class="serif">Wine compliance &amp; shipping</h3>
+        <p>Vino Shipper via a native connector (Crush Suite / Whirlwind) — checkout, branding and data stay in Shopify. Handles NH/MA/FL licensing and DOB verification.</p>
+      </div>
+      <div class="cap">
+        <div class="ico">🎟️</div>
+        <span class="verdict v-app">Paid app</span>
+        <h3 class="serif">Events ticketing</h3>
+        <p>Your #1 online revenue. A purpose-built app (Evey / GM Ticketing) replaces FooEvents with customer self-service — cancels, transfers, credits, dietary notes.</p>
+      </div>
+      <div class="cap">
+        <div class="ico">📦</div>
+        <span class="verdict v-native">Native</span>
+        <h3 class="serif">Dual UPS &amp; mixed cart</h3>
+        <p>Shipping profiles apply wine rates to wine and standard rates to everything else — in one cart. Removes the reason for two separate stores.</p>
+      </div>
+      <div class="cap">
+        <div class="ico">🔁</div>
+        <span class="verdict v-native">Native</span>
+        <h3 class="serif">Wine &amp; Vineyard Clubs</h3>
+        <p>Automated recurring shipments and a self-serve member portal replace Ashlynn's manual Zapier process — with room for the Winemaker's Kitchen culinary club.</p>
+      </div>
+      <div class="cap">
+        <div class="ico">🖥️</div>
+        <span class="verdict v-native">Native</span>
+        <h3 class="serif">CMS &amp; compliance reporting</h3>
+        <p>Built-in CMS for a phased WordPress migration; Shopify Flow auto-sends Williams Compliance reports on a schedule.</p>
+      </div>
+      <div class="cap">
+        <div class="ico">🚀</div>
+        <span class="verdict v-native">Native</span>
+        <h3 class="serif">Room to grow</h3>
+        <p>Open APIs to bridge future hotel/spa systems and Triple Seat — consolidating a fragmented stack onto one platform.</p>
+      </div>
+    </div>
+
+    <div class="callout green">
+      <h4>The two paid apps = the ~$5K app line</h4>
+      <p>Everything else you pay for today — hosting, CDN, security, fraud tooling, and most plugins — is included natively in Shopify Plus. Only wine compliance and events carry a dedicated app cost.</p>
+    </div>
+
+    <div class="callout wine">
+      <h4>Naming the cost up front</h4>
+      <p>On the platform itself, Shopify Plus plus those two apps runs about <b>$21,500 a year more</b> than your current website stack. That's the real increase, and it's worth being clear about it. It's also the smaller number on the page — the far larger figure is what you currently pay to accept a card, which is where Section&nbsp;2 goes next.</p>
+    </div>
+    <p class="src">Source: discovery calls Jul 13–27, 2026; Use-Case Deep Dive.</p>
+  </div>
+</section>
+
+<!-- SECTION 2 -->
+<section id="payments" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">2</div>
+      <div><span class="pill deep">Detailed — the core of the case</span><h2 class="sec-title serif">Payment Processing</h2></div>
+    </div>
+    <p class="sec-sub">You process cards through Global Payments behind an Authorize.net gateway. We read your June 2026 statement line by line. The finding: you're paying an all-in effective rate of <b>15.8%</b> — roughly seven times what Shopify Payments charges.</p>
+
+    <!-- June snapshot -->
+    <div class="stat-row">
+      <div class="stat"><div class="k">June net sales</div><div class="v ink num-tab">$54,400</div><div class="d">441 transactions · $131.71 avg ticket</div></div>
+      <div class="stat"><div class="k">Total fees</div><div class="v red num-tab">$8,611</div><div class="d">Charged by Global Payments</div></div>
+      <div class="stat"><div class="k">Effective rate</div><div class="v red">15.83%</div><div class="d">$8,611 ÷ $54,400</div></div>
+    </div>
+
+    <!-- Decomposition bar -->
+    <div class="viz">
+      <h3 class="serif">What you actually pay — per $100 of card sales</h3>
+      <div class="cap-sm">Only $2.30 is real card-network cost. The other $13.50 is Global Payments' markup.</div>
+
+      <div class="srow">
+        <div class="slabel">Global Payments<small>today</small></div>
+        <div class="strack">
+          <div class="sseg network" style="width:14.4%">$2.30</div>
+          <div class="sseg markup" style="width:84.4%">$13.50 markup</div>
+        </div>
+        <div class="stotal bad">$15.80</div>
+      </div>
+      <div class="srow">
+        <div class="slabel">Shopify Payments<small>2.25% flat</small></div>
+        <div class="strack">
+          <div class="sseg shop" style="width:14.1%">$2.25</div>
+        </div>
+        <div class="stotal good">$2.25</div>
+      </div>
+      <div class="scale-ticks"><span>$0</span><span>$4</span><span>$8</span><span>$12</span><span>$16</span></div>
+
+      <div class="legend">
+        <span><i class="swatch sw-net"></i> Interchange — card-network cost (~2.3%, unavoidable for anyone)</span>
+        <span><i class="swatch sw-mk"></i> Global Payments markup (~13.5%)</span>
+        <span><i class="swatch sw-sh"></i> Shopify Payments all-in (2.25%)</span>
+      </div>
+    </div>
+
+    <!-- Line-by-line -->
+    <h3 class="serif" style="font-size:1.4rem;color:var(--wine-deep);margin:30px 0 8px">Where the $8,611 went — straight from the June statement</h3>
+    <table class="fees">
+      <thead><tr><th>Fee line</th><th>What it is</th><th>Amount</th></tr></thead>
+      <tbody>
+        <tr class="markup"><td>9.9% discount fee <span class="tag-badge tb-mk">MARKUP</span></td><td class="desc">Global Payments' cut on every Visa, Mastercard, Amex &amp; Discover sale — on top of interchange</td><td>$5,744.50</td></tr>
+        <tr class="markup"><td>$2.92 per-transaction fee <span class="tag-badge tb-mk">MARKUP</span></td><td class="desc">Flat fee on all 521 card transactions</td><td>$1,521.32</td></tr>
+        <tr class="markup"><td>Batch, monthly &amp; mandate fees <span class="tag-badge tb-mk">MARKUP</span></td><td class="desc">$0.35/day payout fee + admin lines</td><td>$78.85</td></tr>
+        <tr class="subt"><td>Global Payments markup</td><td class="desc">The part that mostly disappears on Shopify</td><td>$7,344.67</td></tr>
+        <tr class="net"><td>Interchange + assessments <span class="tag-badge tb-net">NETWORK</span></td><td class="desc">Paid to the card networks — everyone pays this, ~2.3%</td><td>$1,266.76</td></tr>
+        <tr class="grand"><td>Total June fees</td><td class="desc">15.8% effective</td><td>$8,611.43</td></tr>
+      </tbody>
+    </table>
+    <p class="src">The 9.9% discount fee alone is $5,744 — over 10% of your sales, before a single per-transaction fee is added.</p>
+
+    <!-- Fact check + hike -->
+    <div class="callout wine">
+      <h4>Independent fact-check — from your own deposits</h4>
+      <p>The statement settled <b>$54,400.38</b> in sales but deposited only <b>$45,788.95</b> to your bank. The $8,611.43 difference is fees — confirming the 15.8% rate a second way, with no assumptions.</p>
+    </div>
+
+    <div class="hike">
+      <div class="hstep a"><div class="mo">April 2026</div><div class="r">8.72%</div></div>
+      <div class="harrow">→</div>
+      <div class="hstep b"><div class="mo">May–June 2026</div><div class="r">9.9%</div></div>
+      <div class="hnote"><b>And it's climbing.</b> Global Payments raised the discount fee mid-quarter — pushing your effective rate from 14.1% to 15.8%. This is a documented pattern with GP, not a one-off.</div>
+    </div>
+
+    <!-- Annualized -->
+    <div class="split-note" style="margin-top:24px">
+      <div class="sn red"><div class="h">Global Payments — annualized</div><div class="n num-tab">~$133,000<span style="font-size:.85rem;color:var(--ink-soft)">/yr</span></div><p>14–16% on ~$888,900 of online card volume. At today's 9.9% markup, trending toward ~$140K.</p></div>
+      <div class="sn green"><div class="h">Shopify Payments</div><div class="n num-tab">~$20,000<span style="font-size:.85rem;color:var(--ink-soft)">/yr</span></div><p>2.25% flat on the same volume. You also regain Shop Pay, Apple Pay &amp; Google Pay, which Authorize.net blocks.</p></div>
+    </div>
+
+    <div class="callout green" style="margin-top:16px">
+      <h4>Processing savings alone: ≈ $113,000 per year</h4>
+      <p>Larger than every other cost in this analysis combined — which is why the higher platform price doesn't decide this.</p>
+    </div>
+
+    <details class="assump">
+      <summary>Assumptions &amp; sources — payments</summary>
+      <ul>
+        <li><b>June figures</b> are read directly from statement 650000007852034_6_2026: net sales $54,400.38, total fees $8,611.43, deposits $45,788.95.</li>
+        <li><b>Markup vs interchange split:</b> GP Processing Fees subtotal $7,344.67 (9.9% discount + $2.92/txn + batch/admin); pass-thru interchange &amp; assessments $1,266.76 (~2.3%, averaging ~2.18% at the interchange line).</li>
+        <li><b>Rate hike:</b> April statement showed the discount fee at 8.72%; May–June at 9.9%.</li>
+        <li><b>Annual volume (~$888,900):</b> trailing-12-month online revenue ex-tasting-room (events $844,750, gift cards $33,800, clubs ~$15,000, wine $8,185, merch $3,380). Tasting room stays on its existing POS.</li>
+        <li><b>Shopify Payments (2.25%):</b> your flat Shopify Plus rate. Alcohol is a reviewed category for eligibility; events/merch/gift cards/culinary are unaffected.</li>
+      </ul>
+    </details>
+  </div>
+</section>
+
+<!-- SECTION 3 -->
+<section id="tco">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-num">3</div>
+      <div><span class="pill brief">The bottom line</span><h2 class="sec-title serif">12-Month Cost Comparison</h2></div>
+    </div>
+    <p class="sec-sub">Platform, payments and apps side by side, over a full year — with the platform increase shown in plain sight.</p>
+
+    <table class="tco">
+      <thead><tr><th>Annual cost</th><th>Today</th><th>Shopify Plus</th></tr></thead>
+      <tbody>
+        <tr><td class="cat">Platform / hosting stack<br><small>WP Engine, plugins, Metorik, chatbot → Plus incl. hosting, CDN, security, fraud</small></td><td class="cur-col">$11,066</td><td class="shop-col">$27,600</td></tr>
+        <tr><td class="cat">Third-party apps<br><small>Wine compliance + events ticketing</small></td><td class="cur-col">incl. above</td><td class="shop-col">~$5,000</td></tr>
+        <tr><td class="cat">Payment gateway<br><small>Authorize.net monthly + per-txn + batch → native</small></td><td class="cur-col">~$1,150</td><td class="shop-col">$0</td></tr>
+        <tr><td class="cat">Card processing<br><small>Global Payments 14–16% → Shopify Payments 2.25%</small></td><td class="cur-col">~$133,000</td><td class="shop-col">~$20,000</td></tr>
+        <tr class="total"><td>Total cost of ownership</td><td class="cur-col">~$145,200</td><td class="shop-col">~$52,600</td></tr>
+      </tbody>
+    </table>
+
+    <div class="versus">
+      <div class="vs-card cur"><div class="who">Staying put</div><div class="amt num-tab">$145K</div><div class="peryr">per year, all-in</div></div>
+      <div class="vs-mid serif">vs</div>
+      <div class="vs-card shop"><div class="who">Shopify Plus</div><div class="amt num-tab">$52.6K</div><div class="peryr">per year, all-in</div></div>
+    </div>
+
+    <div class="split-note">
+      <div class="sn red"><div class="h">↑ Platform + apps cost more</div><div class="n num-tab">+$21,500<span style="font-size:.85rem;color:var(--ink-soft)">/yr</span></div><p>Fair and true — Plus plus the two apps is a bigger platform line than today.</p></div>
+      <div class="sn green"><div class="h">↓ Payments save far more</div><div class="n num-tab">−$114,000<span style="font-size:.85rem;color:var(--ink-soft)">/yr</span></div><p>Processing + gateway savings outweigh the platform increase by more than 5-to-1.</p></div>
+    </div>
+
+    <div class="net-banner">
+      <div class="eyebrow">Net result · year one</div>
+      <div class="amt serif">≈ $93,000 saved</div>
+      <p>A better, consolidated platform — that also costs about $93K less per year than the current setup.</p>
+    </div>
+
+    <details class="assump">
+      <summary>Assumptions &amp; sources — cost model</summary>
+      <ul>
+        <li><b>Today's platform ($11,066):</b> active-tools export — WP Engine $6,624, plugins $1,582.60, Metorik $1,800, chatbot $960, Heyzine $99, Cloudflare $0.</li>
+        <li><b>Shopify Plus ($27,600):</b> $2,300/mo as quoted; includes hosting, CDN, security and fraud paid separately today.</li>
+        <li><b>Apps (~$5,000):</b> wine compliance connector + events ticketing app. Firmed up at app selection.</li>
+        <li><b>Gateway (~$1,150):</b> estimated from the Authorize.net statement; eliminated on Shopify Payments.</li>
+        <li><b>Processing:</b> see Section 2. Figures are directional pending final confirmation.</li>
+      </ul>
+    </details>
+  </div>
+</section>
+
+<!-- WHY NOW -->
+<section id="whynow" class="alt">
+  <div class="wrap">
+    <div class="whynow">
+      <h3 class="serif">Why now</h3>
+      <ul>
+        <li><span class="k">◆</span><div><b>A $529 systems fee hits in October</b> — and the June statement states you can exit the Global Payments contract without penalty by objecting within 120 days of that notice.</div></li>
+        <li><span class="k">◆</span><div><b>Every month on Global Payments is ~$9,000+ in fees</b> — and the rate has already risen once this year.</div></li>
+        <li><span class="k">◆</span><div><b>The savings compound</b> the sooner the migration lands.</div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--gold-soft)">Next steps</div>
+    <h3 class="serif">Confirm eligibility, then move.</h3>
+    <ol>
+      <li>Clear the product catalog through Shopify Payments eligibility (2.25% rate is set).</li>
+      <li>Finalize the wine-compliance and events app selection with the implementation partner.</li>
+      <li>Sequence the migration against the October fee and the 120-day contract-exit window.</li>
+    </ol>
+    <div class="fine">
+      <b>Confidential — prepared for LaBelle Winery.</b> Figures derived from data LaBelle shared (April–June Global Payments &amp; Authorize.net statements, trailing-12-month revenue, active-tools export) and discovery conversations, July 2026. Effective rates are calculated directly from statement totals; app costs, gateway fees and the Shopify Payments rate are to be confirmed before contract. A decision aid, not a quote.
+    </div>
+  </div>
+</footer>
+
+<script>
+  const segs=document.querySelectorAll('.sseg');
+  segs.forEach(s=>{s.dataset.w=s.style.width;s.style.width='0'});
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){const s=e.target;requestAnimationFrame(()=>{s.style.width=s.dataset.w});io.unobserve(s)}})},{threshold:.3});
+  segs.forEach(s=>io.observe(s));
+</script>
+</body>
+</html>
